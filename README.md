@@ -12,7 +12,7 @@ This plugin is not well tested and is mostly an experiment. Contributors are wel
 
 `npm install --save gatsby-source-slack-users`
 
-## How to user
+## How to use
 
 ```javascript
 // In your gatsby-config.js
