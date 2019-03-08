@@ -1,0 +1,23 @@
+{
+  "name": "gatsby-source-slack-users",
+  "author": "Jonathan Edenström <jonathan@edenstrom.io>",
+  "version": "0.1.0",
+  "main": "index.js",
+  "dependencies": {
+    "@slack/client": "^4.11.0"
+  },
+  "bugs": {
+    "url": "https://github.com/edenstrom/gatsby-source-slack-users/issues"
+  },
+  "homepage": "https://github.com/edenstrom/gatsby-source-slack-users",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source-plugin"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": "^2.0.0"
+  },
+  "repository": "https://github.com/edenstrom/gatsby-source-slack-users"
+}
