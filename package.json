@@ -1,15 +1,15 @@
 {
-  "name": "gatsby-source-slack-users",
-  "author": "Jonathan Edenström <jonathan@edenstrom.io>",
-  "version": "0.1.0",
+  "name": "gatsby-source-slack-api",
+  "author": "Aaron Rose",
+  "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
     "@slack/client": "^4.11.0"
   },
   "bugs": {
-    "url": "https://github.com/edenstrom/gatsby-source-slack-users/issues"
+    "url": "https://github.com/acdr/gatsby-source-slack-api/issues"
   },
-  "homepage": "https://github.com/edenstrom/gatsby-source-slack-users",
+  "homepage": "https://github.com/acdr/gatsby-source-slack-api",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -19,5 +19,5 @@
   "peerDependencies": {
     "gatsby": "^2.0.0"
   },
-  "repository": "https://github.com/edenstrom/gatsby-source-slack-users"
+  "repository": "https://github.com/acdr/gatsby-source-slack-api"
 }
