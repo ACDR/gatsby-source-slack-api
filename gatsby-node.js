@@ -5,17 +5,17 @@ function digest(data) {
   return crypto
     .createHash("md5")
     .update(JSON.stringify(data))
-    .digest("hex")
+    .digest("hex");
 }
 
 async function fetchSlackUsers(token) {
-  const client = new WebClient(token)
+  const client = new WebClient(token);
 
-  const response = await client.users.list()
+  const response = await client.users.list();
 
-  if (!response.ok) return null
+  if (!response.ok) return null;
 
-  return response.members
+  return response.members;
 }
 
 function processUser(user) {
@@ -26,17 +26,17 @@ function processUser(user) {
     internal: {
       type: "SlackUser",
     },
-  }
+  };
 }
 
 async function fetchSlackEmoji(token) {
-  const client = new WebClient(token)
+  const client = new WebClient(token);
 
-  const response = await client.emoji.list()
+  const response = await client.emoji.list();
 
-  if (!response.ok) return null
+  if (!response.ok) return null;
 
-  return response.emoji
+  return response.emoji;
 }
 
 function processEmoji(emoji) {
@@ -47,37 +47,41 @@ function processEmoji(emoji) {
     internal: {
       type: "SlackEmoji",
     },
-  }
+  };
 }
 
 exports.sourceNodes = async ({ actions }, options = {}) => {
-  const token = options.accessToken || null
+  const token = options.accessToken || null;
 
-  if (!token) throw new Error("Please supply a token for Slack")
+  if (!token) throw new Error("Please supply a token for Slack");
 
-  const { createNode } = actions
+  const { createNode } = actions;
 
-  const users = await fetchSlackUsers(token)
+  const users = await fetchSlackUsers(token);
 
-  if (!users) throw new Error("Failed to fetch slack users")
+  if (!users) throw new Error("Failed to fetch slack users");
 
   users.forEach(user => {
-    const node = processUser(user)
-    node.internal.contentDigest = digest(node)
+    const node = processUser(user);
+    node.internal.contentDigest = digest(node);
 
-    createNode(node)
-  })
+    createNode(node);
+  });
 
-  const emoji = await fetchSlackEmoji(token)
+  const emoji = await fetchSlackEmoji(token);
 
-  if (!emoji) throw new Error("Failed to fetch slack emoji")
+  if (!emoji) throw new Error("Failed to fetch slack emoji");
 
-  emoji.forEach(emoji => {
-    const node = processUser(emoji)
-    node.internal.contentDigest = digest(node)
+  Object.keys(emoji).forEach((key, index) => {
+    const node = processEmoji({
+      id: key,
+      name: key,
+      url: emoji[key],
+    });
+    node.internal.contentDigest = digest(node);
 
-    createNode(node)
-  })
+    createNode(node);
+  });
 
-  return
+  return;
 }
